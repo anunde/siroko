@@ -3,8 +3,8 @@
 namespace App\Cart\Infrastructure\Repository;
 
 use App\Cart\Domain\Entity\Cart;
-use App\Cart\Domain\Entity\CartId;
 use App\Cart\Domain\Repository\ICartRepository;
+use App\Shared\Domain\Entity\CustomerId;
 use App\Shared\Infrastructure\DataSource\DoctrineDataSource;
 
 class CartRepository implements ICartRepository {
@@ -20,9 +20,9 @@ class CartRepository implements ICartRepository {
         $this->dataSource->persist($cart, true);
     }
 
-    public function findById(CartId $id): ?Cart
+    public function findByCustomerId(CustomerId $customerId): ?Cart
     {
-        return $this->dataSource->entityManager()->getRepository(Cart::class)->find($id);
+        return $this->dataSource->entityManager()->getRepository(Cart::class)->findOneBy(['customerId' => $customerId]);
     }
 
     public function remove(Cart $cart): void

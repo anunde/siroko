@@ -46,4 +46,17 @@ class Cart extends Entity {
             new \DateTime()
         );
     }
+
+    public function addCartItem(CartItem $item): void
+    {
+        foreach ($this->cartItems as $existingItem) {
+            if($existingItem->isSameProduct($item)) {
+                $existingItem->increaseQuantity($item->getQuantity()->value());
+                return;
+            }
+        }
+
+        $this->cartItems->add($item);
+        $item->setCart($this);
+    }
 }
