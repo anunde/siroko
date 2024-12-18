@@ -24,15 +24,15 @@ final class Sku
     private function ensureIsValid(string $type, string $color, string $size): void
     {
         if (!preg_match('/^[A-Z]+$/i', $type)) {
-            throw new \InvalidArgumentException("Invalid type: $type. Only alphabetic characters are allowed.");
+            throw new \InvalidArgumentException("Invalid type: $type. Only alphabetic characters are allowed.", 400);
         }
 
         if (!preg_match('/^[A-Z]+$/i', $color)) {
-            throw new \InvalidArgumentException("Invalid color: $color. Only alphabetic characters are allowed.");
+            throw new \InvalidArgumentException("Invalid color: $color. Only alphabetic characters are allowed.", 400);
         }
 
         if (!preg_match('/^[A-Z0-9]+$/i', $size)) {
-            throw new \InvalidArgumentException("Invalid size: $size. Only alphanumeric characters are allowed.");
+            throw new \InvalidArgumentException("Invalid size: $size. Only alphanumeric characters are allowed.", 400);
         }
     }
 

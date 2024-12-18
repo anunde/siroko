@@ -24,7 +24,7 @@ class Cart extends Entity
     #[ORM\Column(name: "cart_created_at", type: "datetime")]
     private \DateTime $createdAt;
 
-    #[ORM\OneToMany(mappedBy: "cart", targetEntity: CartItem::class, cascade: ["persist", "remove"])]
+    #[ORM\OneToMany(mappedBy: "cart", targetEntity: CartItem::class, cascade: ["persist", "remove"], orphanRemoval: true)]
     private Collection $cartItems;
 
     public function __construct(

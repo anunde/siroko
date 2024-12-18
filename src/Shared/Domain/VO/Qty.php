@@ -8,8 +8,8 @@ final class Qty
 
     public function __construct(int $value)
     {
-        if ($value <= 0) {
-            throw new \InvalidArgumentException("Quantity must be greater than zero.");
+        if ($value < 0) {
+            throw new \InvalidArgumentException("Quantity must be greater than zero.", 400);
         }
 
         $this->value = $value;
@@ -29,8 +29,8 @@ final class Qty
     {
         $newValue = $this->value - $decrement;
 
-        if ($newValue <= 0) {
-            throw new \InvalidArgumentException("Resulting quantity must be greater than zero.");
+        if ($newValue < 0) {
+            throw new \InvalidArgumentException("Resulting quantity must be greater than zero.", 400);
         }
 
         return new self($newValue);

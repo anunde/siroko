@@ -25,9 +25,9 @@ final readonly class SubstractProductFromCartCommandHandler
         if (null === $item) {
             throw new NotFoundException("Product not found in the cart!");
         }
-
+        
         $item->decreaseQuantity($command->getQuantity());
-
+        
         if ($item->getQuantity()->value() === 0) {
             $cart->removeItem($item);
         }
