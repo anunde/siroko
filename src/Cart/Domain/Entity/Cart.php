@@ -10,7 +10,8 @@ use Doctrine\ORM\Mapping as ORM;
 
 #[ORM\Entity]
 #[ORM\Table(name: "cart")]
-class Cart extends Entity {
+class Cart extends Entity
+{
 
     #[ORM\Id]
     #[ORM\Column(name: "cart_id", type: "cart_id", unique: true)]
@@ -52,10 +53,31 @@ class Cart extends Entity {
         return $this->cartItems;
     }
 
+    public function findItem(string $sku): ?CartItem
+    {
+        foreach ($this->cartItems as $item) {
+            if ($item->getSku()->value() === $sku) {
+                return $item;
+            }
+        }
+
+        return null;
+    }
+
+    public function removeItem(CartItem $item): void
+    {
+        $this->cartItems->removeElement($item);
+    }
+
+    public function isEmpty(): bool
+    {
+        return $this->cartItems->isEmpty();
+    }
+
     public function addCartItem(CartItem $item): void
     {
         foreach ($this->cartItems as $existingItem) {
-            if($existingItem->isSameProduct($item)) {
+            if ($existingItem->isSameProduct($item)) {
                 $existingItem->increaseQuantity($item->getQuantity()->value());
                 return;
             }

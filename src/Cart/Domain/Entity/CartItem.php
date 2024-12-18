@@ -83,4 +83,9 @@ class CartItem extends Entity
     {
         $this->quantity = $this->quantity->add($increment);
     }
+
+    public function decreaseQuantity(int $detriment): void
+    {
+        $this->quantity = $this->quantity->subtract($detriment);
+    }
 }
