@@ -10,7 +10,7 @@ final class QtyType extends IntegerType
 {
     public const QTY = 'qty';
 
-    public function convertToDatabaseValue($value, AbstractPlatform $platform)
+    public function convertToDatabaseValue($value, AbstractPlatform $platform): mixed
     {
         if (!$value instanceof Qty) {
             throw new \InvalidArgumentException("Expected Qty object.");
@@ -19,7 +19,7 @@ final class QtyType extends IntegerType
         return $value->value();
     }
 
-    public function convertToPHPValue($value, AbstractPlatform $platform)
+    public function convertToPHPValue($value, AbstractPlatform $platform): mixed
     {
         if ($value === null) {
             return null;
@@ -38,3 +38,4 @@ final class QtyType extends IntegerType
         return true;
     }
 }
+

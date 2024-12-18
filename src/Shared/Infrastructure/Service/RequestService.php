@@ -2,6 +2,7 @@
 
 namespace App\Shared\Infrastructure\Service;
 
+use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
 
 final class RequestService
@@ -20,7 +21,7 @@ final class RequestService
             }
 
             if ($isRequired) {
-                throw new \InvalidArgumentException(\sprintf('The field %s is required!', $fieldName));
+                throw new \InvalidArgumentException(\sprintf('The field %s is required!', $fieldName), JsonResponse::HTTP_BAD_REQUEST);
             }
 
             return null;
@@ -31,7 +32,7 @@ final class RequestService
         }
 
         if ($isRequired) {
-            throw new \InvalidArgumentException(\sprintf('The field %s is required!', $fieldName));
+            throw new \InvalidArgumentException(\sprintf('The field %s is required!', $fieldName), JsonResponse::HTTP_BAD_REQUEST);
         }
 
         return null;

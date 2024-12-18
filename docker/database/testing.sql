@@ -1,2 +1,6 @@
-CREATE DATABASE IF NOT EXISTS symfony_db_test;
-GRANT ALL PRIVILEGES ON symfony_db_test.* TO 'root' IDENTIFIED BY 'root';
+CREATE DATABASE IF NOT EXISTS siroko_db_test;
+
+CREATE USER IF NOT EXISTS 'root'@'%' IDENTIFIED BY 'root';
+GRANT ALL PRIVILEGES ON siroko_db_test.* TO 'root'@'%';
+
+FLUSH PRIVILEGES;

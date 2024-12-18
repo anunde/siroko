@@ -51,6 +51,11 @@ final class Sku
         return $this->value === $other->value();
     }
 
+    public function getType(): string
+    {
+        return $this->type;
+    }
+
     public function __toString(): string
     {
         return $this->value;

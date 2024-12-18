@@ -15,7 +15,7 @@ abstract class UuidType extends Type
         return $platform->getGuidTypeDeclarationSQL($fieldDeclaration);
     }
 
-    public function convertToPHPValue($value, AbstractPlatform $platform)
+    public function convertToPHPValue($value, AbstractPlatform $platform): mixed
     {
         $className = $this->getValueObjectClassName();
 
@@ -30,7 +30,7 @@ abstract class UuidType extends Type
         }
     }
 
-    public function convertToDatabaseValue($value, AbstractPlatform $platform): string
+    public function convertToDatabaseValue($value, AbstractPlatform $platform): mixed
     {
         $className = $this->getValueObjectClassName();
 

@@ -33,13 +33,13 @@ class AddProductToCartController extends AbstractController
             return new JsonResponse([
                 "status" => true,
                 "message" => "Product added to cart!"
-            ], 201);
+            ], JsonResponse::HTTP_CREATED);
 
         } catch(\Throwable $th) {
             return new JsonResponse([
                 "status" => false,
                 "message" => $th->getMessage()
-            ], 500);
+            ], $th->getCode());
         }
     }
 

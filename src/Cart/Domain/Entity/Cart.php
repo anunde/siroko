@@ -47,6 +47,11 @@ class Cart extends Entity {
         );
     }
 
+    public function getItems(): Collection
+    {
+        return $this->cartItems;
+    }
+
     public function addCartItem(CartItem $item): void
     {
         foreach ($this->cartItems as $existingItem) {

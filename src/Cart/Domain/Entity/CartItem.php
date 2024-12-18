@@ -64,6 +64,11 @@ class CartItem extends Entity
         return $this->quantity;
     }
 
+    public function getSku(): Sku
+    {
+        return $this->sku;
+    }
+
     public function setCart(Cart $cart): void
     {
         $this->cart = $cart;
