@@ -17,7 +17,7 @@ final readonly class SubstractProductFromCartCommandHandler
         $cart = $this->repository->findByCustomerId(new CustomerId($command->getCustomerId()));
 
         if (null === $cart) {
-            throw new NotFoundException("You don't have any cart created!");
+            throw new NotFoundException("You do not have any cart created!");
         }
 
         $item = $cart->findItem($command->getSku());

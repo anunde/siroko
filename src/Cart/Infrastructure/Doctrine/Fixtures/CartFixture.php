@@ -19,7 +19,7 @@ class CartFixture extends Fixture
             size: 42,
             price: 9.99,
             currency: 'EUR',
-            quantity: 1
+            quantity: 2
         );
 
         $item2 = CartItem::create(
