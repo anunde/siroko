@@ -2,7 +2,7 @@
 
 namespace App\Shared\Domain\VO;
 
-final class Sku
+class Sku
 {
     private string $type;
     private string $color;

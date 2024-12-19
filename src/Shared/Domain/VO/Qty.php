@@ -2,7 +2,7 @@
 
 namespace App\Shared\Domain\VO;
 
-final class Qty
+class Qty
 {
     private int $value;
 
