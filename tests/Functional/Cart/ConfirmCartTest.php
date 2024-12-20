@@ -12,7 +12,7 @@ class ConfirmCartTest extends CartTestBase
 
         self::$client->request(
             'POST',
-            \sprintf('%s/confirm', $customerId),
+            \sprintf('%s/%s/confirm', $this->endpoint, $customerId),
             [],
             [],
             [
@@ -33,7 +33,7 @@ class ConfirmCartTest extends CartTestBase
 
         self::$client->request(
             'POST',
-            \sprintf('%s/confirm', $customerId),
+            \sprintf('%s/%s/confirm', $this->endpoint, $customerId),
             [],
             [],
             [
