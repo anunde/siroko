@@ -14,7 +14,7 @@ class GetTotalItemsController extends AbstractController
         private readonly GetTotalItemsQueryHandler $handler
     ) {}
 
-    #[Route(path: '/cart/total/{customerId}', name: 'cart_total')]
+    #[Route(path: '/{customerId}/total', name: 'cart_total')]
     public function __invoke($customerId): JsonResponse
     {
         try {

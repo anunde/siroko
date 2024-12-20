@@ -16,7 +16,7 @@ class AddProductToCartController extends AbstractController
         private readonly AddProductToCartCommandHandler $handler
     ) {}
 
-    #[Route(path: '/cart/add', name: 'cart_add', methods: "POST")]
+    #[Route(path: '/add', name: 'cart_add', methods: "POST")]
     public function __invoke(Request $request): JsonResponse
     {
         try {

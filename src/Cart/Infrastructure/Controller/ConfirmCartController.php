@@ -14,7 +14,7 @@ class ConfirmCartController extends AbstractController
         private readonly ConfirmCartCommandHandler $handler
     ) {}
 
-    #[Route(path: '/cart/{customerId}/confirm', name: 'cart_confirm', methods: "POST")]
+    #[Route(path: '/{customerId}/confirm', name: 'cart_confirm', methods: "POST")]
     public function __invoke($customerId): JsonResponse
     {
         try {

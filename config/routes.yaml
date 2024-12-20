@@ -3,3 +3,4 @@ controllers:
         path: ../src/Cart/Infrastructure/Controller
         namespace: App\Cart\Infrastructure\Controller
     type: attribute
+    prefix: '/api/v1/cart'

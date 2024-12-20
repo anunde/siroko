@@ -12,6 +12,6 @@ class CartTestBase extends TestBase
     {
         parent::setUp();
 
-        $this->endpoint = '/cart';
+        $this->endpoint = '/api/v1/cart';
     }
 }

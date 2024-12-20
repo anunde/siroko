@@ -8,7 +8,6 @@ use Symfony\Component\HttpFoundation\JsonResponse;
 
 class SubstractProductFromCartTest extends CartTestBase
 {
-    private const ENDPOINT = '/cart/substract';
 
     public function testSubstractProductSuccessfully(): void
     {
@@ -21,8 +20,19 @@ class SubstractProductFromCartTest extends CartTestBase
             "quantity" => 1
         ];
 
-        $response = $this->sendDeleteRequest($payload);
+        self::$client->request(
+            'DELETE',
+            \sprintf('%s/substract', $this->endpoint),
+            [],
+            [],
+            [
+                'CONTENT_TYPE' => 'application/json',
+                'ACCEPT' => 'application/json'
+            ],
+            json_encode($payload)
+        );
 
+        $response = self::$client->getResponse();
         $this->assertEquals(JsonResponse::HTTP_NO_CONTENT, $response->getStatusCode());
 
         $updatedCart = $this->getCartByCustomerId($customerId);
@@ -41,8 +51,19 @@ class SubstractProductFromCartTest extends CartTestBase
             "quantity" => 1
         ];
 
-        $response = $this->sendDeleteRequest($payload);
+        self::$client->request(
+            'DELETE',
+            \sprintf('%s/substract', $this->endpoint),
+            [],
+            [],
+            [
+                'CONTENT_TYPE' => 'application/json',
+                'ACCEPT' => 'application/json'
+            ],
+            json_encode($payload)
+        );
 
+        $response = self::$client->getResponse();
         $this->assertEquals(JsonResponse::HTTP_NO_CONTENT, $response->getStatusCode());
 
         $updatedCart = $this->getCartByCustomerId($customerId);
@@ -61,8 +82,19 @@ class SubstractProductFromCartTest extends CartTestBase
             "quantity" => 1
         ];
 
-        $response = $this->sendDeleteRequest($payload);
+        self::$client->request(
+            'DELETE',
+            \sprintf('%s/substract', $this->endpoint),
+            [],
+            [],
+            [
+                'CONTENT_TYPE' => 'application/json',
+                'ACCEPT' => 'application/json'
+            ],
+            json_encode($payload)
+        );
 
+        $response = self::$client->getResponse();
         $this->assertEquals(JsonResponse::HTTP_NOT_FOUND, $response->getStatusCode());
         $this->assertStringContainsString("Product not found in the cart!", $response->getContent());
     }
@@ -77,17 +109,9 @@ class SubstractProductFromCartTest extends CartTestBase
             "quantity" => 1
         ];
 
-        $response = $this->sendDeleteRequest($payload);
-
-        $this->assertEquals(JsonResponse::HTTP_NOT_FOUND, $response->getStatusCode());
-        $this->assertStringContainsString("You do not have any cart created!", $response->getContent());
-    }
-
-    private function sendDeleteRequest(array $payload): JsonResponse
-    {
         self::$client->request(
             'DELETE',
-            self::ENDPOINT,
+            \sprintf('%s/substract', $this->endpoint),
             [],
             [],
             [
@@ -97,7 +121,9 @@ class SubstractProductFromCartTest extends CartTestBase
             json_encode($payload)
         );
 
-        return self::$client->getResponse();
+        $response = self::$client->getResponse();
+        $this->assertEquals(JsonResponse::HTTP_NOT_FOUND, $response->getStatusCode());
+        $this->assertStringContainsString("You do not have any cart created!", $response->getContent());
     }
 
     private function getCartByCustomerId(string $customerId): ?Cart

@@ -12,7 +12,7 @@ class GetTotalItemsTest extends CartTestBase
 
         self::$client->request(
             'GET',
-            \sprintf('%s/total/%s', $this->endpoint, $customerId),
+            \sprintf('%s/%s/total', $this->endpoint, $customerId),
             [],
             [],
             [
@@ -34,7 +34,7 @@ class GetTotalItemsTest extends CartTestBase
 
         self::$client->request(
             'GET',
-            \sprintf('%s/total/%s', $this->endpoint, $customerId),
+            \sprintf('%s/%s/total', $this->endpoint, $customerId),
             [],
             [],
             [

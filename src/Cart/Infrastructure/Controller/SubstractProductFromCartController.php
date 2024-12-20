@@ -16,7 +16,7 @@ class SubstractProductFromCartController extends AbstractController
         private readonly SubstractProductFromCartCommandHandler $handler
     ) {}
 
-    #[Route(path: '/cart/substract', name: 'cart_substract', methods: ["DELETE"])]
+    #[Route(path: '/substract', name: 'cart_substract', methods: ["DELETE"])]
     public function __invoke(Request $request): JsonResponse
     {
         try {
