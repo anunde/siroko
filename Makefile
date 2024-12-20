@@ -31,7 +31,7 @@ build: ## Rebuilds all the containers
 	U_ID=${UID} docker-compose build
 
 prepare: ## Runs backend commands
-	$(MAKE) composer-install
+	$(MAKE) composer-install && $(MAKE) migrations
 
 # Backend commands
 composer-install: ## Installs composer dependencies
