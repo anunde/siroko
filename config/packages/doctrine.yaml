@@ -8,6 +8,7 @@ doctrine:
             cart_item_id: App\Cart\Infrastructure\Doctrine\Type\CartItemIdType
             sku: App\Shared\Infrastructure\Doctrine\Type\SkuType
             qty: App\Shared\Infrastructure\Doctrine\Type\QtyType
+            cart_status: App\Cart\Infrastructure\Doctrine\Type\CartStatusType
 
         # IMPORTANT: You MUST configure your server version,
         # either here or in the DATABASE_URL env var (see .env file)

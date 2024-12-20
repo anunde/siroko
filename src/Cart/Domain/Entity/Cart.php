@@ -22,7 +22,7 @@ class Cart extends Entity
     #[ORM\Column(name: "cart_customer_id", type: "customer_id")]
     private CustomerId $customerId;
 
-    #[ORM\Column(name: "cart_status", type: "string")]
+    #[ORM\Column(name: "cart_status", type: "cart_status")]
     private CartStatus $status;
 
     #[ORM\Column(name: "cart_created_at", type: "datetime")]
