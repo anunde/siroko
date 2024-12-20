@@ -53,6 +53,15 @@ class Cart extends Entity
         return $this->cartItems;
     }
 
+    public function getTotalItems(): int
+    {
+        $total = 0;
+        foreach ($this->cartItems as $item) {
+            $total += $item->getQuantity()->value();
+        }
+        return $total;
+    }
+
     public function findItem(string $sku): ?CartItem
     {
         foreach ($this->cartItems as $item) {
