@@ -2,6 +2,7 @@
 
 namespace App\Cart\Domain\Entity;
 
+use App\Cart\Domain\ValueObject\CartStatus;
 use App\Shared\Domain\Entity\CustomerId;
 use App\Shared\Domain\Entity\Entity;
 use Doctrine\Common\Collections\ArrayCollection;
@@ -21,6 +22,9 @@ class Cart extends Entity
     #[ORM\Column(name: "cart_customer_id", type: "customer_id")]
     private CustomerId $customerId;
 
+    #[ORM\Column(name: "cart_status", type: "string")]
+    private CartStatus $status;
+
     #[ORM\Column(name: "cart_created_at", type: "datetime")]
     private \DateTime $createdAt;
 
@@ -30,10 +34,12 @@ class Cart extends Entity
     public function __construct(
         CartId $id,
         CustomerId $customerId,
+        CartStatus $status,
         \DateTime $createdAt
     ) {
         $this->id = $id;
         $this->customerId = $customerId;
+        $this->status = $status;
         $this->createdAt = $createdAt;
         $this->cartItems = new ArrayCollection();
     }
@@ -44,6 +50,7 @@ class Cart extends Entity
         return new self(
             new CartId(CartId::random()),
             new CustomerId($customerId),
+            CartStatus::open(),
             new \DateTime()
         );
     }
