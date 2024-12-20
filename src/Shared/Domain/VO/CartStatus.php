@@ -4,7 +4,7 @@ namespace App\Cart\Domain\ValueObject;
 
 use InvalidArgumentException;
 
-final class CartStatus
+class CartStatus
 {
     private const VALID_STATUSES = ['open', 'process_payment', 'close'];
     private string $value;

@@ -90,9 +90,14 @@ class Cart extends Entity
         return $this->cartItems->isEmpty();
     }
 
+    public function getCartStatus(): CartStatus
+    {
+        return $this->status;
+    }
+
     public function confirmPayment(): void
     {
-        $this->status = new CartStatus("process_payment");
+        $this->status = CartStatus::processPayment();
     }
 
     public function addCartItem(CartItem $item): void
